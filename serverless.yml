@@ -1,5 +1,4 @@
-# NOTE: update this with your service name
-service: serverless-nodejs-starter
+service: notar
 
 # Use the serverless-webpack plugin to transpile ES6
 plugins:
@@ -21,9 +20,11 @@ provider:
   environment: ${file(env.yml):${self:provider.stage}}
 
 functions:
-  hello:
-    handler: handler.hello
+  getKey:
+    handler: keys/get.main
     events:
       - http:
-          path: hello
+          cors: true
+          path: /keys/
           method: get
+          authorizer: aws_iam
