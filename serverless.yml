@@ -28,3 +28,11 @@ functions:
           path: /keys/
           method: get
           authorizer: aws_iam
+  createKey:
+    handler: keys/create.main
+    events:
+      - http:
+          cors: true
+          path: /keys/
+          method: post
+          authorizer: aws_iam

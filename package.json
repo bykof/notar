@@ -26,7 +26,10 @@
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.371.0",
     "babel-runtime": "^6.26.0",
-    "source-map-support": "^0.4.18"
+    "sha.js": "^2.4.11",
+    "source-map-support": "^0.4.18",
+    "uuid": "^3.3.2"
   }
 }
