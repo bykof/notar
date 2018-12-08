@@ -14,13 +14,9 @@ export async function main(event, context) {
 
     try {
         const result = await documentClient.scan(params).promise();
-        if (result.Items.length !== 0) {
-            return success(result.Items);
-        } else {
-            return failure({status: false, error: 'Key not found.'});
-        }
+        return success(result.Items);
     } catch (error) {
         console.log('ERROR IN RESPONSE: ', error);
-        return failure({status: false});
+        return failure({status: false, error: error});
     }
 }
