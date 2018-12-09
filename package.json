@@ -4,7 +4,9 @@
   "description": "A Node.js starter for the Serverless Framework with async/await and unit test support",
   "main": "handler.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "testCreateKey": "sls invoke local --function createKey --path mocks/keys/create.json",
+    "testGetKey": "sls invoke local --function getKey --path mocks/keys/get.json"
   },
   "author": "",
   "license": "MIT",
