@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "testCreateKey": "sls invoke local --function createKey --path mocks/keys/create.json",
-    "testGetKey": "sls invoke local --function getKey --path mocks/keys/get.json"
+    "testGetKey": "sls invoke local --function getKey --path mocks/keys/get.json",
+    "testCreateContract": "sls invoke local --function createContract --path mocks/contracts/create.json"
   },
   "author": "",
   "license": "MIT",

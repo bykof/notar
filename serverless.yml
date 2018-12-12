@@ -47,3 +47,11 @@ functions:
           path: /keys/
           method: post
           authorizer: aws_iam
+  createContract:
+    handler: contracts/create.main
+    events:
+      - http:
+          cors: true
+          path: /contracts/
+          method: post
+          authorizer: aws_iam
