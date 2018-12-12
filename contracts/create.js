@@ -12,7 +12,7 @@ export async function main(event, context) {
         let result = await new ContractModel().create(
             event.requestContext.identity.cognitoIdentityId,
             hash,
-            body.contractPdf,
+            body.contractPDF,
         );
         return success(result.Item);
     } catch (error) {
