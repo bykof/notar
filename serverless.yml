@@ -29,6 +29,10 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:us-east-1:*:*"
+    - Effect: Allow
+      Action:
+        - cognito-identity:*
+      Resource: "arn:aws:cognito-idp:us-east-1:246983217870:userpool/us-east-1_OEXVswdYB"
 
 functions:
   getKey:
@@ -55,3 +59,14 @@ functions:
           path: /contracts/
           method: post
           authorizer: aws_iam
+  test:
+    handler: contracts/test.main
+    events:
+      - http:
+          cors: true
+          path: /contracts/test
+          method: get
+          authorizer: aws_iam
+  getUsers:
+    handler: users/get.main
+    events:

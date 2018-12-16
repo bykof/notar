@@ -1,12 +1,12 @@
 import KeyModel from "./keyModel";
 
-const AWS = require('aws-sdk');
-
 import {success, failure} from "../libs/response-lib";
+import UserModel from "../users/userModel";
 
 export async function main(event, context) {
     try {
-        const result = await new KeyModel().getKeysByUserId(event.requestContext.identity.cognitoIdentityId);
+        const username = new UserModel().usernameByEvent(event);
+        const result = await new KeyModel().getKeysByUsername(username);
         return success(result.Items);
     } catch (error) {
         console.log(error);

@@ -7,14 +7,14 @@ export default class KeyModel {
         this.documentClient = new AWS.DynamoDB.DocumentClient();
     }
 
-    async getKeysByUserId(userId) {
+    async getKeysByUsername(username) {
         return this.documentClient.scan(
             {
                 TableName: 'keys',
                 ExpressionAttributeValues: {
-                    ':userId': userId,
+                    ':username': username,
                 },
-                FilterExpression: 'userId = :userId',
+                FilterExpression: 'username = :username',
             }
         ).promise()
     }
@@ -36,15 +36,15 @@ export default class KeyModel {
         }
     }
 
-    async createKey(userId, hash) {
-        const keysResult = await this.getKeysByUserId(userId);
+    async createKey(username, hash) {
+        const keysResult = await this.getKeysByUsername(username);
         await this.deactiveKeys(keysResult.Items);
         return this.documentClient.put(
             {
                 TableName: 'keys',
                 Item: {
                     'keyId': uuid.v1(),
-                    'userId': userId,
+                    'username': username,
                     'created': Date.now(),
                     'hash': hash,
                     'active': true
