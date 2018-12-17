@@ -16,8 +16,10 @@ export async function main(event, context) {
             body.contractPDF,
             body.users,
         );
+        console.log(result);
         return success(result.Item);
     } catch (error) {
+        console.log(error);
         return failure({status: false, error: error});
     }
 }

@@ -19,7 +19,7 @@ export default class UserModel {
     }
 
     usernameByEvent(event) {
-        let splittedProvider =event.requestContext.identity.cognitoAuthenticationProvider.split(':');
+        let splittedProvider = event.requestContext.identity.cognitoAuthenticationProvider.split(':');
         return splittedProvider[splittedProvider.length - 1];
     }
 }

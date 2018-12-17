@@ -32,7 +32,12 @@ provider:
     - Effect: Allow
       Action:
         - cognito-identity:*
-      Resource: "arn:aws:cognito-idp:us-east-1:246983217870:userpool/us-east-1_OEXVswdYB"
+        - cognito-idp:*
+      Resource: "arn:aws:cognito-idp:us-east-1:*:*"
+    - Effect: "Allow"
+      Action:
+        - "ses:*"
+      Resource: "*"
 
 functions:
   getKey:
