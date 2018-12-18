@@ -8,6 +8,7 @@
     "testCreateKey": "sls invoke local --function createKey --path mocks/keys/create.json",
     "testGetKey": "sls invoke local --function getKey --path mocks/keys/get.json",
     "testCreateContract": "sls invoke local --function createContract --path mocks/contracts/create.json",
+    "testGetAllContractsOfUser": "sls invoke local --function getContracts --path mocks/contracts/get.json",
     "testGetAllUsers": "sls invoke local --function getUsers --path mocks/users/get.json"
   },
   "author": "",

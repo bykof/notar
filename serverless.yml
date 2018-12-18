@@ -64,6 +64,14 @@ functions:
           path: /contracts/
           method: post
           authorizer: aws_iam
+  getContracts:
+    handler: contracts/get.main
+    events:
+      - http:
+          cors: true
+          path: /contracts/
+          method: get
+          authorizer: aws_iam
   test:
     handler: contracts/test.main
     events:

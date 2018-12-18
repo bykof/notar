@@ -16,9 +16,13 @@ export default class ContractModel {
                 contractId: uuid.v1(),
                 createdByUserId: username,
                 created: Date.now(),
-                users: {
-                    [username]: hash,
-                },
+                users: [
+                    {
+                        username: username,
+                        hash: null,
+                        signed: null,
+                    }
+                ],
                 hash: null,
                 contractPdf: contractPDF,
             },
@@ -44,11 +48,16 @@ export default class ContractModel {
                     ],
                     `You were invited to sign a new Contract!`,
                     `Please sign-in in Notar and sign-up your newly contract!`,
-
                 )
             }
         }
 
         return this.documentClient.put(params).promise();
+    }
+
+    async getContractsByUsername(username) {
+        return (await this.documentClient.scan({
+            TableName: 'contracts',
+        }).promise()).Items.filter((contract) => contract.users.some((user) => user.username));
     }
 }

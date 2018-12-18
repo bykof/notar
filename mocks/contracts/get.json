@@ -1,0 +1,10 @@
+{
+  "pathParameters": {
+    "id": "578eb840-f70f-11e6-9d1a-1359b3b22944"
+  },
+  "requestContext": {
+    "identity": {
+      "cognitoAuthenticationProvider": "cognito-idp.us-east-1.amazonaws.com/us-east-1_OEXVswdYB,cognito-idp.us-east-1.amazonaws.com/us-east-1_OEXVswdYB:CognitoSignIn:da5c99dc-bc76-4148-a498-8aa33735f1e5"
+    }
+  }
+}
