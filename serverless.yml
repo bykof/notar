@@ -72,6 +72,14 @@ functions:
           path: /contracts/
           method: get
           authorizer: aws_iam
+  signUp:
+    handler: contracts/signUp.main
+    events:
+      - http:
+          cors: true
+          path: /contracts/
+          method: post
+          authorizer: aws_iam
   test:
     handler: contracts/test.main
     events:

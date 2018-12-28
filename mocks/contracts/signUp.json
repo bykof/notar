@@ -1,0 +1,11 @@
+{
+  "body": "{\"firstName\": \"Michael\", \"lastName\": \"Tester\", \"birthdayTimestamp\": 758937600, \"pin\": 1234, \"contractId\": \"294833c0-06d1-11e9-9f9a-6d9354538672\"}",
+  "pathParameters": {
+    "id": "578eb840-f70f-11e6-9d1a-1359b3b22944"
+  },
+  "requestContext": {
+    "identity": {
+      "cognitoAuthenticationProvider": "cognito-idp.us-east-1.amazonaws.com/us-east-1_OEXVswdYB,cognito-idp.us-east-1.amazonaws.com/us-east-1_OEXVswdYB:CognitoSignIn:8d40c6a5-e839-4b9b-9ac9-81bd8f5b32ae"
+    }
+  }
+}

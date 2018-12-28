@@ -15,3 +15,15 @@ export default function hashGenerator (
         pin.toString()
     ).digest('hex');
 }
+
+export function hashWithHashes (
+    hashes
+) {
+    let shaObject = shajs('sha256');
+
+    for (let hash of hashes) {
+        shaObject.update(hash);
+    }
+
+    return shaObject.digest('hex');
+}

@@ -9,7 +9,8 @@
     "testGetKey": "sls invoke local --function getKey --path mocks/keys/get.json",
     "testCreateContract": "sls invoke local --function createContract --path mocks/contracts/create.json",
     "testGetAllContractsOfUser": "sls invoke local --function getContracts --path mocks/contracts/get.json",
-    "testGetAllUsers": "sls invoke local --function getUsers --path mocks/users/get.json"
+    "testGetAllUsers": "sls invoke local --function getUsers --path mocks/users/get.json",
+    "testSignUp": "sls invoke local --function signUp --path mocks/contracts/signUp.json"
   },
   "author": "",
   "license": "MIT",
