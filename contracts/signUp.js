@@ -15,12 +15,20 @@ export async function main(event, context) {
 
     try {
         const username = new UserModel().usernameByEvent(event);
-        await new ContractModel().signUp(
+        let result = await new ContractModel().signUp(
             body.contractId,
             username,
             hash,
         );
-        return success();
+
+        switch (result) {
+            case null || undefined:
+                return failure({status: false, message: 'There was an unexpected error.'});
+            case -1:
+                return failure({status: false, message: 'Your PIN was not correct.'});
+            case true:
+                return success();
+        }
     } catch (error) {
         console.log(error);
         return failure({status: false, error: error});

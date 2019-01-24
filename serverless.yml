@@ -77,7 +77,7 @@ functions:
     events:
       - http:
           cors: true
-          path: /contracts/
+          path: /contracts/sign-up/
           method: post
           authorizer: aws_iam
   test:

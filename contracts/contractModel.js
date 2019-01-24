@@ -3,6 +3,7 @@ import uuid from "uuid";
 import UserModel from "../users/userModel";
 import EmailService from "../emailService";
 import {hashWithHashes} from "../keys/hashGenerator";
+import KeyModel from "../keys/keyModel";
 
 
 export default class ContractModel {
@@ -90,6 +91,14 @@ export default class ContractModel {
         return counter > 0;
     }
 
+    async isHashActive(username, hash) {
+        let keys = await new KeyModel().getKeysByUsername(username);
+        for (let key of keys.Items) {
+            if (key.hash === hash && key.active) return true;
+        }
+        return false;
+    }
+
     async signContract(contract) {
         let hash = hashWithHashes(contract.users.map((user) => user.hash));
         let result = await this.documentClient.update({
@@ -109,6 +118,11 @@ export default class ContractModel {
     }
 
     async signUp(contractId, username, hash) {
+
+        if (!(await this.isHashActive(username, hash))) {
+            return -1;
+        }
+
         try {
             let contractResult = await this.getContract(contractId);
             let indexOfUser = contractResult.Item.users.findIndex((user) => user.username === username);
@@ -138,6 +152,8 @@ export default class ContractModel {
                 contractResult = await this.getContract(contractId);
                 await this.signContract(contractResult.Item);
             }
+
+            return true;
         } catch (error) {
             console.log('Error: ', error);
             return null;
